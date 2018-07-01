@@ -1,0 +1,20 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sise.dao.NewsDao">
+    <select id="findNewsByCid" resultType="com.sise.po.News">
+        select * from news where cid = #{cid}
+    </select>
+    <resultMap id="news" type="com.sise.po.News">
+        <id property="id" column="id"/>
+        <result column="title" property="title"/>
+        <result property="issueTime" column="issueTime"/>
+        <association property="category" javaType="com.sise.po.Category" column="cid" select="com.sise.dao.CategoryDao.findCategory">
+            <id property="id" column="id"/>
+            <result property="categoryName" column="categoryName"/>
+        </association>
+    </resultMap>
+    <select id="findNewsById" resultMap="news">
+        select * from news where id=#{id}
+    </select>
+
+</mapper>

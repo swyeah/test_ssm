@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <settings>
+        <!--这个配置使全局的映射器启用或禁用缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 允许JDBC支持生产的键，需要适当的驱动。如果设置为true，则这个设置强制生成的键被使用，尽管一些驱动拒绝兼容但是仍然有效-->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!-- 设置默认的执行器，SIMPLE执行器没有什么特别之处。REUSE执行器则重用预处理语句。BATCH执行器重用语句和批量更新 -->
+        <setting name="defaultExecutorType" value="REUSE"/>
+        <!-- 要使延迟加载生效必须配置下面两个选择 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 设置超时时间，决定驱动等待一个数据库响应的时间 -->
+        <setting name="defaultStatementTimeout" value="25000"/>
+    </settings>
+
+    <!-- 环境配置，即连接的数据库  -->
+
+    <!-- mappers告诉mybatis去哪里找持久化类的映射文件 -->
+   <!-- <mappers>
+        <mapper resource="com/sise/dao/CategoryDao.xml"/>
+        <mapper resource="com/sise/dao/NewsDao.xml"/>
+
+    </mappers>-->
+
+</configuration>
