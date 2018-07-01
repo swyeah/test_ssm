@@ -1,0 +1,27 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sise.dao.CategoryDao">
+
+    <resultMap id="category" type="com.sise.po.Category">
+        <id property="id" column="id"/>
+        <result property="categoryName" column="categoryName"/>
+        <collection property="newsList" column="id" ofType="com.sise.po.News"  select="com.sise.dao.NewsDao.findNewsByCid">
+            <id property="id" column="id"/>
+            <result property="title" column="title"/>
+            <result property="content" column="content"/>
+            <result property="issueTime" column="issueTime"/>
+        </collection>
+
+    </resultMap>
+
+    <select id="findCategoryById" resultMap="category">
+        select * from category where id=#{id}
+    </select>
+    <select id="findCategory" parameterType="Integer" resultType="com.sise.po.Category">
+        select * from category where id=#{cid}
+    </select>
+
+
+
+
+</mapper>
